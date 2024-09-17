@@ -1,24 +1,28 @@
 // src/components/NavBar/NavBar.jsx
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 import CartWidget from '../CartWidget/CartWidget';
+import './NavBar.css'; // Crea un archivo CSS para estilos personalizados
 
 const NavBar = () => {
   return (
-    <AppBar position="static" sx={{ top: 0 }}> {/* Asegura que esté pegado al top */}
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Nombre de la Tienda
-        </Typography>
-        <Button color="inherit" href="#categoria1">Categoría 1</Button>
-        <Button color="inherit" href="#categoria2">Categoría 2</Button>
-        <Button color="inherit" href="#categoria3">Categoría 3</Button>
-        <CartWidget /> {/* Renderiza el CartWidget dentro del NavBar */}
-      </Toolbar>
-    </AppBar>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+      <Link className="navbar-brand" to="/">Mi Tienda</Link>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav me-auto">
+          <li className="nav-item">
+            <Link className="nav-link" to="/category/vehiculos">Vehículos</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/category/bicicletas">Bicicletas</Link>
+          </li>
+        </ul>
+        <CartWidget />
+      </div>
+    </nav>
   );
 };
 
